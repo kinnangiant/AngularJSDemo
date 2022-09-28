@@ -1,32 +1,28 @@
 ﻿<!DOCTYPE html>
-<html ng-app="user.list">
+<html ng-app="Home">
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <!-- donot include min version as it will never point to the right error-->>
+    <!-- donot include min version as it will never point to the right error--><!-->-->
+    <!-- Angular Scripts-->
     <script src="Scripts/angular-1.4.2/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-    <script src="User/app.js"></script>
-    <script src="User/config.js"></script>
-    <script src="User/controllers.js"></script>
+
+    <!-- Main home page Scripts-->
+    <script src="Home/app.js"></script>
+    <script src="Home/config.js"></script>
+    <script src="Home/controllers.js"></script>
+
+    <!--Login Script-->
+    <script src="Authentication/app.js"></script>
+    <script src="Authentication/config.js"></script>
+    <script src="Authentication/controllers.js"></script>
+
 </head>
-<body ng-controller="MainController as o">
-   
+<body ng-controller="HomeController">
 
-   
-
-    <input type="text" placeholder="Username" ng-model="Credentials.UserName" />
-
-    <input type="text" placeholder="password" ng-model="Credentials.Password" />
-
-
-    {{ Credentials.UserName }}
-    {{ Credentials.Password }}
-
-
-    <input type="button" title="" value="User" ng-click="Login()" />
-
+    <a ui-sref="home.login">Login</a>
     <div ui-view class="full-height"></div>
-
+   
 </body>
 </html>
