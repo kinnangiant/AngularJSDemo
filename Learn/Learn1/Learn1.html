@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html ng-app="customersApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Hello World sdads</title>
+</head>
+<body ng-init="customers = [{ name:'kinnan', city:'lahore' }, {name : 'nawaz', city : 'multan'},{name:'talal', city : 'karachi'}]">
+
+    <input type="text" ng-model="name">
+    <ul>
+        <li ng-repeat="newcustomer in customers | filter:names | orderBy:'city'  ">{{ newcustomer.name | lowercase}} {{' '}} {{newcustomer.city | uppercase }}  </li>
+    </ul>
+
+    <!--And the following <person> element matches the person directive: like ng-init, ng-repeat
+    <person>{{name}}</person>-->
+    <!-- Scripts -->
+    
+    
+    <!-- cannot do this-->
+    <div ng-controller="controllerOne">
+        <input type="text" ng-model="firstname">
+        <ul>
+            <li ng-repeat="newcustomer in firstname | filter:names | orderBy:'city'  ">{{ newcustomer.name | lowercase}} {{' '}} {{newcustomer.city | uppercase }}  </li>
+        </ul>
+
+    </div>
+
+
+    <div ng-controller="controllerTwo">
+        <input type="text" ng-model="lastname">
+        <ul>
+            <li ng-repeat="newcustomer in lastname | filter:names | orderBy:'city'  ">{{ newcustomer.name | lowercase}} {{' '}} {{newcustomer.city | uppercase }}  </li>
+        </ul>
+    </div>
+
+    <script src="Scripts/angular.js"></script>
+    <script>
+
+        // this is the statring application
+        var app = angular.module('customersApp', []);
+
+        app.controller("controllerOne", controllerOne);
+        app.controller("controllerTwo", controllerOne);
+        //app.config(function ($routeProvider) {
+
+        //});
+
+
+        // cannot do this
+        function controllerOne($scope) {
+            $scope.customer =
+                [
+                    { name: 'kinnan', city: 'lahore' },
+                    { name: 'nawaz', city: 'multan' },
+                    { name: 'talal', city: 'karachi' }
+                ];
+        }
+
+        // cannot do this
+        function controllerTwo($scope) {
+            $scope.customer =
+                [
+                    { name: 'kinnan', city: 'lahore' },
+                    { name: 'nawaz', city: 'multan' },
+                    { name: 'talal', city: 'karachi' }
+                ];
+        }
+
+    </script>
+
+
+</body>
+</html>
