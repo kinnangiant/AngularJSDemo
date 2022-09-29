@@ -1,9 +1,9 @@
 ﻿<div ng-controller="LoginController">
+
    <input type="text" placeholder="Username" ng-model="Credentials.UserName" />
     <input type="text" placeholder="password" ng-model="Credentials.Password" />
     {{ Credentials.UserName }}
     {{ Credentials.Password }}
     <input type="button" title="" value="User" ng-click="Login()" />
-    <a ui-sref="user">Home</a>
 
 </div>

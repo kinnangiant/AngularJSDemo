@@ -1,8 +1,8 @@
 ﻿
 
 Home.controller('HomeController', ['$scope', '$location', '$state', function ($scope, $location, $state) {
+    alert('HomeController');
 
-
-   // alert('hello')
-
+    $location.path("/Authentication");
+    
 }]);

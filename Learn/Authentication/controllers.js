@@ -1,5 +1,6 @@
 ﻿userLogin.controller('LoginController', ['$scope', '$location', function ($scope, $location) {
 
+    alert("LoginController")
     $scope.Credentials = {
         UserName: '',
         Password: ''
@@ -10,13 +11,10 @@
 
     $scope.Login = function () {
 
-        //console.log($scope.Credentials.UserName);
-        //console.log($location.path());
-
-        if (!$scope.Credentials)
-            $location.path('/views/User')
+        if ($scope.Credentials)
+            $location.path('/User')
         else
-            alert("hello")
+            alert("LoginController")
     }
 
 }]);

@@ -4,5 +4,5 @@
 var Home;
 
 (function () {
-    Home = angular.module('Home', ['ui.router','Authentication']);    
+    Home = angular.module('Home', ['ui.router','Authentication','User']);    
 })();
