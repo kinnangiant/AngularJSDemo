@@ -2,7 +2,6 @@
 
 var user;
 
-    (function () {
-        user = angular.module('User', []);
-    }
-    )();
+(function () {
+    user = angular.module('User', []);
+})();

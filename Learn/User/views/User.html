@@ -1,3 +1,19 @@
 ﻿<div ng-controller="UserController">
-    user
+   <table>
+       <thead>
+           <tr>
+               <th>Id</th>
+               <th>FirstNamw</th>
+               <th>LastName</th>
+           </tr>
+       </thead>
+       <tbody>
+           {{ UserDetail[0] | json }}
+           <tr ng-repeat="o in UserDetail">
+               <td>{{o.id}}</td>
+               <td>{{o.firstName}}</td>
+               <td>{{o.lastname}}</td>
+           </tr>
+       </tbody>
+   </table>
 </div>
