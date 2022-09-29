@@ -1,19 +1,31 @@
 ﻿<div ng-controller="UserController">
-   <table>
-       <thead>
-           <tr>
-               <th>Id</th>
-               <th>FirstNamw</th>
-               <th>LastName</th>
-           </tr>
-       </thead>
-       <tbody>
-           {{ UserDetail[0] | json }}
-           <tr ng-repeat="o in UserDetail">
-               <td>{{o.id}}</td>
-               <td>{{o.firstName}}</td>
-               <td>{{o.lastname}}</td>
-           </tr>
-       </tbody>
-   </table>
+    <table>
+        <tr>
+            <td><input type="text" placeholder="firstname" ng-model="SearchEmployee.firstname" /> </td>
+            <td><input type="text" placeholder="lastname" ng-model="SearchEmployee.lastname" /> </td>
+            <td><input type="button" value="Search" ng-click="SearchUser(SearchEmployee)" /> </td>
+        </tr>
+    </table>
+
+    {{SearchEmployee.firstname}}
+
+    <hr />
+    {{ UserDetail | json}}
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstNamw</th>
+                <th>LastName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="o in UserDetail">
+                <td>{{o.id}}</td>
+                <td>{{o.firstName}}</td>
+                <td>{{o.lastname}}</td>
+                <td><a ng-click="deleteuser(o.id)">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

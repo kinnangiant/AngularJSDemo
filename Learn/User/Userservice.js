@@ -3,10 +3,6 @@ user.service('userservice', function () {
 
     var onlyUser = [];
 
-    this.getCustomers = function () {
-        return customers;
-    };
-
     var UserDetail = [
         {
             id: 1, firstName: 'Lee', lastName: 'Carroll', address: '1234 Anywhere St.', city: 'Phoenix',
@@ -84,7 +80,6 @@ user.service('userservice', function () {
     ];
 
 
-
     this.getUsers = function () {
         for (var i = 0; i < UserDetail.length; i++) {
             var temp = {
@@ -99,7 +94,43 @@ user.service('userservice', function () {
         return onlyUser;
     };
 
-    alert('userservice');
+    this.deleteUser = function (id) {
+        var temp = UserDetail.find(a => a.id == id);
+        UserDetail.pop(temp);
+    };
+
+    this.searchUser = function (firstname,lastname) {
+        var temp = UserDetail.find(a => a.firstName == firstname && a.lastName == lastname);
+
+        if (temp)
+            alert('found')
+        else
+            alert('not found')
+    };
+
+
+    this.addUser = function (model) {
+
+        var temp = UserDetail.push(a => a.firstName == firstname && a.lastName == lastname);
+
+        if (temp)
+            alert('found')
+        else
+            alert('not found')
+    };
+
+
+    this.updateUser = function (model) {
+
+        var temp = UserDetail.find(a => a.firstName == model.id);
+
+        temp.firstName = model.firstName;
+        temp.lastName = model.lastname;
+
+
+    };
+
+    //alert('userservice');
 });
 
 
