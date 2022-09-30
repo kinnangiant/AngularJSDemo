@@ -1,33 +1,65 @@
 ﻿Home.controller('UserController', ['$scope', '$location', '$state', 'userservice', function ($scope, $location, $state, userservice) {
 
     var SearchEmployee = {
-        firstname: '',
-        lastname : ''
+        firstName: '',
+        lastName: '',
+        id:''
     };
 
 
-    $scope.UserDetail = [];
-    $scope.UserDetail = userservice.getUsers();
+    $scope.UserDetails = userservice.getUsers();
 
-    console.log(JSON.stringify($scope.UserDetail));
+    //$scope.UserDetail = [];
+    //init();
 
-    $scope.deleteuser = function (id) {
-        alert(id);
+    $scope.init = function init() {
+        $scope.UserDetails = userservice.getUsers();
+    }
+
+    
+    //$scope.UserDetail = userservice.getUsers();
+
+    //console.log(JSON.stringify($scope.UserDetail));
+
+    //$scope.deleteuser = function (id) {
+    //    alert(id);
+    //    userservice.deleteUser(id);
+    //    $scope.UserDetail = []
+    //    $scope.UserDetail = userservice.getUsers();
+    //}
+
+    $scope.deleteUser = function (id) {
+        $scope.UserDetails = [];
+
         userservice.deleteUser(id);
-        $scope.UserDetail = []
-        $scope.UserDetail = userservice.getUsers();
+        $scope.init();
+    };
+
+    $scope.SearchUser = function (SearchEmployee) {
+        userservice.searchUser(SearchEmployee);
+        $scope.init();
     }
 
-    $scope.SearchUser = function (model) {
-        userservice.searchUser(model.firstname,model.lastname);
-    }
+    $scope.AddUser = function (SearchEmployee) {
 
-    $scope.AddUser = function (model) {
-        //userservice.searchUser(model.firstname, model.lastname);
+        SearchEmployee.id = Object.keys($scope.UserDetails).length
+        
+        userservice.addUser(SearchEmployee);
+        $scope.init();
     }
 
     $scope.UpdateUser = function (model) {
-        //userservice.searchUser(model.firstname, model.lastname);
+
+        userservice.UpdateUser(model);
+        $scope.init();
     }
+
+    $scope.reset = function () {
+        userservice.reset();
+        $scope.init();
+    }
+
+
+    //$scope.init();
 
 }]);

@@ -1,16 +1,16 @@
 ﻿<div ng-controller="UserController">
     <table>
         <tr>
-            <td><input type="text" placeholder="firstname" ng-model="SearchEmployee.firstname" /> </td>
-            <td><input type="text" placeholder="lastname" ng-model="SearchEmployee.lastname" /> </td>
+            <td><input type="text" placeholder="firstname" ng-model="SearchEmployee.firstName" /> </td>
+            <td><input type="text" placeholder="lastname" ng-model="SearchEmployee.lastName" /> </td>
             <td><input type="button" value="Search" ng-click="SearchUser(SearchEmployee)" /> </td>
+            <td><input type="button" value="Reset" ng-click="reset()" /> </td>
+            <td><input type="button" value="Add" ng-click="AddUser(SearchEmployee)" /> </td>
         </tr>
     </table>
-
-    {{SearchEmployee.firstname}}
-
+    {{SearchEmployee.firstName}}
     <hr />
-    {{ UserDetail | json}}
+    {{ UserDetails | json}}
     <table>
         <thead>
             <tr>
@@ -20,11 +20,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="o in UserDetail">
+            <tr ng-repeat="o in UserDetails">
                 <td>{{o.id}}</td>
                 <td>{{o.firstName}}</td>
-                <td>{{o.lastname}}</td>
-                <td><a ng-click="deleteuser(o.id)">Delete</a></td>
+                <td>{{o.lastName}}</td>
+                <td><a ng-click="deleteUser(o.id)">Delete</a></td>
             </tr>
         </tbody>
     </table>

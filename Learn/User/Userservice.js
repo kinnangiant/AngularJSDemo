@@ -1,8 +1,7 @@
 ﻿
 user.service('userservice', function () {
-
-    var onlyUser = [];
-
+    //let onlyUser = [];
+    
     var UserDetail = [
         {
             id: 1, firstName: 'Lee', lastName: 'Carroll', address: '1234 Anywhere St.', city: 'Phoenix',
@@ -79,13 +78,17 @@ user.service('userservice', function () {
         }
     ];
 
+    var Detail = UserDetail;
+
+
 
     this.getUsers = function () {
-        for (var i = 0; i < UserDetail.length; i++) {
-            var temp = {
+        let onlyUser = [];
+        for (let i = 0; i < UserDetail.length; i++) {
+            let temp = {
                 id: UserDetail[i].id,
                 firstName: UserDetail[i].firstName,
-                lastname: UserDetail[i].lastName
+                lastName: UserDetail[i].lastName
             };
 
             onlyUser.push(temp);
@@ -95,34 +98,38 @@ user.service('userservice', function () {
     };
 
     this.deleteUser = function (id) {
-        var temp = UserDetail.find(a => a.id == id);
-        UserDetail.pop(temp);
+        for (let i = UserDetail.length - 1; i >= 0; i--) {
+            if (UserDetail[i].id === id) {
+                UserDetail.splice(i, 1);
+                break;
+            }
+        }
     };
 
-    this.searchUser = function (firstname,lastname) {
-        var temp = UserDetail.find(a => a.firstName == firstname && a.lastName == lastname);
+    //this.deleteUser = function (id) {
+    //    var temp = UserDetail.find(a => a.id == id);
+    //    UserDetail.pop(temp);
+    //};
 
-        if (temp)
-            alert('found')
-        else
-            alert('not found')
+    this.searchUser = function (searchUser) {
+        let temp = UserDetail.find(a => a.firstName == searchUser.firstName && a.lastName == searchUser.lastName);
+        UserDetail = [];
+        UserDetail.push(temp);
+    };
+
+    this.reset = function () {
+        UserDetail = [];
+        UserDetail = Detail;
+    }
+
+    this.addUser = function (searchUser) {
+        UserDetail.push(searchUser);
     };
 
 
-    this.addUser = function (model) {
+    this.updateUser = function (updateUser) {
 
-        var temp = UserDetail.push(a => a.firstName == firstname && a.lastName == lastname);
-
-        if (temp)
-            alert('found')
-        else
-            alert('not found')
-    };
-
-
-    this.updateUser = function (model) {
-
-        var temp = UserDetail.find(a => a.firstName == model.id);
+        let temp = UserDetail.find(a => a.id == updateUser.id);
 
         temp.firstName = model.firstName;
         temp.lastName = model.lastname;
