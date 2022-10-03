@@ -3,9 +3,12 @@
         <tr>
             <td><input type="text" placeholder="firstname" ng-model="SearchEmployee.firstName" /> </td>
             <td><input type="text" placeholder="lastname" ng-model="SearchEmployee.lastName" /> </td>
+            <td><input type="hidden" ng-model="SearchEmployee.id" /> </td>
             <td><input type="button" value="Search" ng-click="SearchUser(SearchEmployee)" /> </td>
             <td><input type="button" value="Reset" ng-click="reset()" /> </td>
             <td><input type="button" value="Add" ng-click="AddUser(SearchEmployee)" /> </td>
+            <td><input type="button" value="Update" ng-click="UpdateUser(SearchEmployee)" /> </td>
+
         </tr>
     </table>
     {{SearchEmployee.firstName}}
@@ -25,7 +28,9 @@
                 <td>{{o.firstName}}</td>
                 <td>{{o.lastName}}</td>
                 <td><a ng-click="deleteUser(o.id)">Delete</a></td>
+                <td><a ng-click="SelectUser(o);">Update</a></td>
             </tr>
         </tbody>
     </table>
+
 </div>

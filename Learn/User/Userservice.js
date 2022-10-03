@@ -80,8 +80,6 @@ user.service('userservice', function () {
 
     var Detail = UserDetail;
 
-
-
     this.getUsers = function () {
         let onlyUser = [];
         for (let i = 0; i < UserDetail.length; i++) {
@@ -106,11 +104,6 @@ user.service('userservice', function () {
         }
     };
 
-    //this.deleteUser = function (id) {
-    //    var temp = UserDetail.find(a => a.id == id);
-    //    UserDetail.pop(temp);
-    //};
-
     this.searchUser = function (searchUser) {
         let temp = UserDetail.find(a => a.firstName == searchUser.firstName && a.lastName == searchUser.lastName);
         UserDetail = [];
@@ -127,17 +120,18 @@ user.service('userservice', function () {
     };
 
 
-    this.updateUser = function (updateUser) {
+    this.updateUser = function (modeluser) {
 
-        let temp = UserDetail.find(a => a.id == updateUser.id);
+        let temp = UserDetail.find(a => a.id == modeluser.id);
 
-        temp.firstName = model.firstName;
-        temp.lastName = model.lastname;
+        temp.firstName = modeluser.firstName;
+        temp.lastName = modeluser.lastName;
+
 
 
     };
 
-    //alert('userservice');
+
 });
 
 
